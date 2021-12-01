@@ -1,10 +1,15 @@
 def main():
     list = inputAsList()
-    print(list)
+    res = 0
+    for i in range (0,len(list)-1):
+        if(list[i] < list[i+1]):
+            res+=1
+    return res
+
 
 
 def inputAsList():
-    f = open('day1/input')
+    f = open('input')
     return list(map(int, f.read().splitlines()))
 
-main()
+print(main())
