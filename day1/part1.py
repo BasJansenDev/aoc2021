@@ -7,7 +7,7 @@ def main():
     return res
 
 def oneliner():
-    return len(list(filter(lambda x: (x > 0),[j-i for i,j in zip(inputAsList()[:-1],inputAsList()[1:])])))
+    return sum([i > j for j, i in zip(inputAsList(), inputAsList()[1:])])
 
 def inputAsList():
     f = open('input')
