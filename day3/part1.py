@@ -1,21 +1,21 @@
-import operator
-
 
 def main():
     lst = inputAsList()
-    res = (0,0)
-    for i in range (0,len(lst)):
-        entry = lst[i].split(' ')
-        direction = DIRECTIONS[entry[0]]
-        magnitude = int(entry[1])
-        res = tuple(map(operator.add,res, (direction[0] * magnitude,direction[1] * magnitude)))
-    return res[0]*res[1]
+    ones = [0] * len(lst[0])
+    for byte in lst:
+        for bit in range(len(byte)):
+            if int(byte[bit]) :
+                ones[bit] += 1
+    bin = list(map(lambda x : x > len(lst)/2,ones))
+    binInverse = [not elem for elem in bin]
+    return bitshift(bin) * bitshift(binInverse)
 
-DIRECTIONS = {
-    'forward': (1, 0),
-    'down': (0,1),
-    'up': (0, -1)
-}
+def bitshift(bin):
+    out = 0
+    for bit in bin:
+        out = (out << 1) | bit
+    return out
+
 def inputAsList():
     f = open('input')
     return list(f.read().splitlines())

@@ -1,23 +1,32 @@
-import operator
-
 
 def main():
     lst = inputAsList()
-    res = (0,0)
-    aim = 0
-    for i in range (0,len(lst)):
-        entry = lst[i].split(' ')
-        direction = DIRECTIONS[entry[0]]
-        magnitude = int(entry[1])
-        aim += direction[1] * magnitude
-        res = tuple(map(operator.add,res, (direction[0] * magnitude, direction[0] * magnitude * aim)))
-    return res[0]*res[1]
+    a=calc(lst,False)
+    b=calc(lst,True)
+    return int(a,2)*int(b,2)
 
-DIRECTIONS = {
-    'forward': (1, 0),
-    'down': (0,1),
-    'up': (0, -1)
-}
+
+def calc(lst, inv):
+    res = lst
+    idx = 0
+    while len(res) != 1:
+        ones = 0
+        for byte in res:
+            if int(byte[idx]):
+                ones += 1
+        if(not inv):
+            mcb = ones >= len(res) / 2
+        else:
+            mcb = len(res) - ones > len(res) / 2
+        resTmp = []
+        for byte in res:
+            if (int(byte[idx]) == mcb):
+                resTmp += [byte]
+        res = resTmp
+        idx += 1
+    return res[0]
+
+
 def inputAsList():
     f = open('input')
     return list(f.read().splitlines())
