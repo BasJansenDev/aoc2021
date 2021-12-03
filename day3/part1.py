@@ -4,10 +4,11 @@ import operator
 def main():
     lst = inputAsList()
     res = (0,0)
-    for i in lst:
-        direction,magnitude = i.split(' ')
-        direction_tuple = DIRECTIONS[direction]
-        res = tuple(map(operator.add,res, (direction_tuple[0] * int(magnitude),direction_tuple[1] * int(magnitude))))
+    for i in range (0,len(lst)):
+        entry = lst[i].split(' ')
+        direction = DIRECTIONS[entry[0]]
+        magnitude = int(entry[1])
+        res = tuple(map(operator.add,res, (direction[0] * magnitude,direction[1] * magnitude)))
     return res[0]*res[1]
 
 DIRECTIONS = {

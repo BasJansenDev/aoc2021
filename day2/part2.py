@@ -5,12 +5,11 @@ def main():
     lst = inputAsList()
     res = (0,0)
     aim = 0
-    for i in range (0,len(lst)):
-        entry = lst[i].split(' ')
-        direction = DIRECTIONS[entry[0]]
-        magnitude = int(entry[1])
-        aim += direction[1] * magnitude
-        res = tuple(map(operator.add,res, (direction[0] * magnitude, direction[0] * magnitude * aim)))
+    for i in lst:
+        direction, magnitude = i.split(' ')
+        direction_tuple = DIRECTIONS[direction]
+        aim += direction_tuple[1] * int(magnitude)
+        res = tuple(map(operator.add,res, (direction_tuple[0] * int(magnitude), direction_tuple[0] * int(magnitude) * aim)))
     return res[0]*res[1]
 
 DIRECTIONS = {
