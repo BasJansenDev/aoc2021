@@ -8,8 +8,8 @@ def main():
         for bit in range(len(byte)):
             if int(byte[bit]):
                 ones[bit] += 1
-    binary = list(map(lambda x : x > len(lst)/2,ones))
-    return reduce(lambda a, b: (a<<1) + int(b), binary) * reduce(lambda a, b: (a<<1) + int(b), [not elem for elem in binary])
+    bn = reduce(lambda a, b: (a<<1) + int(b), list(map(lambda x : x > len(lst)/2,ones)))
+    return bn * (2**(len(lst[0]))-bn-1)
 
 def inputAsList():
     f = open('input')
