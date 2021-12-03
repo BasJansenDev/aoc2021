@@ -20,7 +20,7 @@ def calc(lst, inv):
             mcb = len(res) - ones > len(res) / 2
         resTmp = []
         for byte in res:
-            if (int(byte[idx]) == mcb):
+            if int(byte[idx]) == mcb:
                 resTmp += [byte]
         res = resTmp
         idx += 1
