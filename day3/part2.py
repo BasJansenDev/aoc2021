@@ -7,15 +7,7 @@ def main():
 def calc(res, inv):
     idx = 0
     while len(res) > 1:
-        ones = 0
-        for byte in res:
-            if int(byte[idx]):
-                ones += 1
-        resTmp = []
-        for byte in res:
-            if int(byte[idx]) == ((ones >= len(res) / 2) ^ inv):
-                resTmp += [byte]
-        res = resTmp
+        res = list(filter(lambda byte : int(byte[idx]) == ((sum(int(byte[idx]) for byte in res) >= len(res) / 2) ^ inv),res))
         idx += 1
     return res[0]
 
