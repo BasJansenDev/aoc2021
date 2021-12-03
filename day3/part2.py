@@ -7,9 +7,10 @@ def main():
 def calc(res, inv):
     idx = 0
 
-    # For bits[idx], take the sum to determine if 0 or 1 is the most common for that bit.
-    # Then, filter the original list based on whether a set of bits has the most common bit in idx.
-    # The inv parameter inverses the results, taking the least common bit for an index instead.
+    # For bits[idx], take the sum and check if it's greater than half the length of the input
+    # to determine the most common bit for idx.
+    # The `inv` parameter inverses the results, taking the least common bit for an index instead.
+    # Then, filter the input based on whether a set of bits has the most/least (depending on `inv`) common bit in idx.
     # Repeat until there is only one entry left.
 
     while len(res) > 1:
