@@ -13,8 +13,7 @@ def main(inp, part2):
                 for y in range(y1, y2 + y_step, y_step):
                     pipes.append(tuple([x, y]))
         elif (part2):
-            range_len = x2 - x1 + 1 if x1 < x2 else x1 - x2 + 1
-            for dot in range(0, range_len):
+            for dot in range(0, abs(x2-x1)+1):
                 pipes.append(tuple([x1 + (dot * x_step), y1 + (dot * y_step)]))
     seen = set()
     return len(set([x for x in pipes if x in seen or seen.add(x)]))
