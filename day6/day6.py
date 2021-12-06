@@ -2,7 +2,7 @@ from functools import lru_cache
 
 
 def main(inp, days):
-    return sum(recurse(fish,days) for fish in [int(j) for j in [i.split(',') for i in inp][0]])
+    return sum(recurse(fish,days) for fish in [int(j) for j in [i for i in inp]])
 
 
 @lru_cache(maxsize=None)
@@ -12,7 +12,7 @@ def recurse(value, days):
 
 def input_as_list(inp):
     f = open(inp)
-    return list(f.read().splitlines())
+    return list(f.read().split(','))
 
 
 print('Part 1: ' + str(main(input_as_list('input'), 80)))
