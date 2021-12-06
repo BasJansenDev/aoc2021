@@ -2,8 +2,7 @@ from functools import lru_cache
 
 
 def main(inp, days):
-    fishlist = [int(j) for j in [i.split(',') for i in inp][0]]
-    return sum(recurse(fish,days) for fish in fishlist)
+    return sum(recurse(fish,days) for fish in [int(j) for j in [i.split(',') for i in inp][0]])
 
 
 @lru_cache(maxsize=None)
