@@ -20,18 +20,18 @@ def main2(inp):
                 elif len(pattern) == 4:
                     true_patterns['4'] = pattern
                 elif len(pattern) == 5:
-                    if '7' in true_patterns and not '3' in true_patterns and set(true_patterns['7']).issubset(set(pattern)):
+                    if '7' in true_patterns and set(true_patterns['7']).issubset(set(pattern)):
                         true_patterns['3'] = pattern
-                    elif '3' in true_patterns and not '5' in true_patterns and '6' in true_patterns and len(set(true_patterns['6']).symmetric_difference(pattern)) == 1:
+                    elif '3' in true_patterns and '6' in true_patterns and len(set(true_patterns['6']).symmetric_difference(pattern)) == 1:
                         true_patterns['5'] = pattern
-                    elif '5' in true_patterns and '3' in true_patterns and not '2' in true_patterns:
+                    elif '5' in true_patterns:
                         true_patterns['2'] = pattern
                 elif len(pattern) == 6:
-                    if '4' in true_patterns and not '9' in true_patterns and set(true_patterns['4']).issubset(set(pattern)):
+                    if '4' in true_patterns and set(true_patterns['4']).issubset(set(pattern)):
                         true_patterns['9'] = pattern
-                    elif '9' in true_patterns and '1' in true_patterns and not '0' in true_patterns and set(true_patterns['1']).issubset(set(pattern)):
+                    elif '9' in true_patterns and '1' in true_patterns and set(true_patterns['1']).issubset(set(pattern)):
                         true_patterns['0'] = pattern
-                    elif '9' in true_patterns and '0' in true_patterns and not '6' in true_patterns:
+                    elif '0' in true_patterns:
                         true_patterns['6'] = pattern
                 elif len(pattern) == 7:
                     true_patterns['8'] = pattern
