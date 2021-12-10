@@ -44,10 +44,10 @@ def get_adjacent_points(matrix, y, x):
     return adjacent
 
 
-def matrixut_as_list(matrix):
+def input_as_list(matrix):
     f = open(matrix)
     return list(f.read().splitlines())
 
 
-print('Part 1: ' + str(main(matrixut_as_list('input'))))
-print('Part 2: ' + str(main2(matrixut_as_list('input'))))
+print('Part 1: ' + str(main(input_as_list('input'))))
+print('Part 2: ' + str(main2(input_as_list('input'))))
