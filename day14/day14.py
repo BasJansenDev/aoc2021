@@ -8,27 +8,19 @@ def add_or_update(dictionary, key, times):
         dictionary[key] = times
 
 
-def deduct_or_remove(dictionary, key, times):
-    if dictionary[key] == times:
-        dictionary.pop(key, None)
-    else:
-        dictionary.update({key: dictionary[key] - times})
-
-
 def main(inp, steps):
     polymer = inp[0]
     rules = dict(inp[1])
     char_count = dict(collections.Counter(polymer))
     pair_count = dict()
     for i in range(len(polymer) - 1):
-        pair = polymer[i] + polymer[i + 1]
-        add_or_update(pair_count, pair, 1)
+        add_or_update(pair_count, polymer[i] + polymer[i + 1], 1)
     for step in range(steps):
         temp_count = pair_count.copy()
         for pair in pair_count:
             times = pair_count[pair]
             val = rules[pair]
-            deduct_or_remove(temp_count, pair, times)
+            add_or_update(temp_count, pair, -times)
             add_or_update(char_count, val, times)
             add_or_update(temp_count, pair[0] + val, times)
             add_or_update(temp_count, val + pair[1], times)
